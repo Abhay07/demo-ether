@@ -157,28 +157,33 @@
           document.getElementById('walletLoadSuccessful').innerHTML = 'Please enter seed';
           return;
         }
+        document.getElementById('walletLoadSuccessful').innerHTML = ''
+      try{ 
+        lightwallet.keystore.createVault({
+          password: password,
+          seedPhrase: document.getElementById('seed').value,
+          //random salt 
+          hdPathString: "m/0'/0'/0'"
+        }, function (err, ks) {
+          if(err){
+            document.getElementById('walletLoadSuccessful').innerHTML = 'FAILURE'
+            return;
+          }
 
-      lightwallet.keystore.createVault({
-        password: password,
-        seedPhrase: document.getElementById('seed').value,
-        //random salt 
-        hdPathString: "m/0'/0'/0'"
-      }, function (err, ks) {
-        if(err){
-          document.getElementById('walletLoadSuccessful').innerHTML = 'FAILURE'
-          return;
+          document.getElementById('walletLoadSuccessful').innerHTML = 'SUCCESS'
+          global_keystore = ks
+
+          document.getElementById('seed').value = ''
+          
+          newAddresses(password);
+          setWeb3Provider(global_keystore);
+          
+          getBalances();
+          })
         }
-
-        document.getElementById('walletLoadSuccessful').innerHTML = 'SUCCESS'
-        global_keystore = ks
-
-        document.getElementById('seed').value = ''
-        
-        newAddresses(password);
-        setWeb3Provider(global_keystore);
-        
-        getBalances();
-        })
+        catch(){
+          document.getElementById('walletLoadSuccessful').innerHTML = 'FAILURE'
+        }
       }
 
       function newWallet() {
