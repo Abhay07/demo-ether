@@ -1,0 +1,80 @@
+body{
+	font-family: 'Helvetica';
+	background:linear-gradient(90deg,#ffecd2,#fcb69f);
+}
+#app{
+	padding:10px;
+}
+
+.container{
+	width:600px;
+	margin-bottom: 100px;
+}
+
+.heading{
+	font-size: 25px;	
+	margin-bottom: 10px;
+}
+
+input{
+	width:100%;
+	font-size: 20px;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+
+button{
+	background-color: #03A9F4;
+    border: none;
+    font-size: 18px;
+    color: white;
+    text-transform: uppercase;
+    padding: 0 13px;
+    cursor: pointer;
+}
+
+button:focus{
+	outline: none;
+}
+
+button:hover{
+	opacity: 0.8;
+}
+
+.input-container{
+	display: flex;
+	height: 50px;
+	margin-bottom: 5px;
+}
+
+input.disabled{
+	background-color:#f1f1f1;
+	border:none;
+}
+
+header{
+	text-align: center;
+	font-size: 30px;
+}
+
+.output-container{
+	margin-top: 10px;
+}
+
+.output-container input{
+	height: 50px;
+}
+
+.help-txt{
+	color: #9E9E9E;
+}
+
+.success-msg{
+	color: green;
+	font-size: 20px;
+}
+#sendFrom{
+	height: 50px;
+	font-size: 20px;
+	width: 30%;
+}
